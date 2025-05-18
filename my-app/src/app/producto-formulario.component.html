@@ -1,0 +1,29 @@
+<h1 class="titleText">Inventory Record</h1>
+
+<form [formGroup]="productoFormulario" class="form-empresa" (ngSubmit)="onSubmit()">
+
+  <label for="title" class="form-label">Title: </label>
+  <input type="text" formControlName="title" required pattern=".+" title="El Titulo es Obligatorio" class="form-input"
+    placeholder="Enter a Name">
+
+  <label for="price" class="form-label">Price: </label>
+  <input type="number" required pattern="^[1-9]\d*(\.\d{1,2})?$" title="El precio debe ser positivo"
+    formControlName="price" class="form-input" placeholder="Enter a Price $$">
+
+  <label for="description" class="form-label">Description: </label>
+  <input type="text" formControlName="description" required pattern="^.+$" class="form-input"
+    placeholder="Enter a Description">
+
+  <label for="category" class="form-label">Category: </label>
+  <!-- Este dropdownMenu fue realizado con prompt de Copilot -->
+  <select formControlName="categoryId" required pattern="^[1-9]\d*$" class="form-input">
+    <option value="" disabled selected>Select a Category</option>
+    <option value="1">Electronic Devices</option>
+    <option value="2">Clothes</option>
+    <option value="3">Home Accesories</option>
+    <option value="4">Toys</option>
+  </select>
+  <!-- Fin de dropdownMenu realizado con prompt de Copilot -->
+  <!-- <pre>{{ productoFormulario.status }} - {{productoFormulario.value }}</pre> -->
+  <button type="submit" [disabled]="productoFormulario.invalid" class="form-boton">Create New Product !</button>
+</form>
