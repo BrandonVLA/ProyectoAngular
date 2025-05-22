@@ -1,40 +1,42 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { Title } from '@angular/platform-browser';
-import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-producto-formulario',
   templateUrl: './producto-formulario.component.html',
-  styleUrls: ['./producto-formulario.component.css'],
-  standalone: true,
+  styleUrls: ['./producto-formulario.component.css'], //Con ayuda de copilot tuve que modificar styleUrr por styleUrls para evitar error de ejecucion relacionado con StandAlone
+  standalone: true, // StandAlone fue agregado para evitar error de ejecucion por Copilot
   imports: [ReactiveFormsModule],
 })
 export class ProductoFormularioComponent {
   productoFormulario: FormGroup;
   categorias = [
-    { id: 1, name: 'Ropa' },
-    { id: 2, name: 'Electrónica' },
-    { id: 3, name: 'Muebles' },
-    { id: 4, name: 'Zapatos' },
-    { id: 5, name: 'Otros' }
+    { id: 1, name: 'Clothes' },
+    { id: 2, name: 'Electronic Devices' },
+    { id: 3, name: 'Furniture' },
+    { id: 4, name: 'Shoes' },
+    { id: 5, name: 'Others' },
   ];
 
   constructor(private fb: FormBuilder) {
     this.productoFormulario = this.fb.group({
       title: ['', [Validators.required, Validators.pattern(/^.+$/)]],
-      price: ['', [Validators.required, Validators.pattern(/^[1-9]\d*(\.\d{1,2})?$/)]],
+      price: [
+        '',
+        [Validators.required, Validators.pattern(/^[1-9]\d*(\.\d{1,2})?$/)],
+      ],
       description: ['', [Validators.required, Validators.pattern(/^.+$/)]],
       categoryId: ['', [Validators.required, Validators.pattern(/^[1-9]\d*$/)]],
     });
   }
 
+  /* Realizado con ayuda de Copilot */
   onSubmit() {
     if (this.productoFormulario.valid) {
       const formValue = this.productoFormulario.value;
       const categoriaSeleccionada = this.categorias.find(
-        cat => cat.id === Number(formValue.categoryId)
+        (cat) => cat.id === Number(formValue.categoryId)
       );
       const dataProducto = {
         title: formValue.title,
@@ -55,7 +57,11 @@ export class ProductoFormularioComponent {
 - Título: ${data.title}
 - Precio: ${data.price}
 - Descripción: ${data.description}
-- Categoría: ${categoriaSeleccionada ? categoriaSeleccionada.name : data.category?.name || data.category?.id}
+- Categoría: ${
+            categoriaSeleccionada
+              ? categoriaSeleccionada.name
+              : data.category?.name || data.category?.id
+          }
 - ID: ${data.id}
 - Imágenes: ${data.images?.join(', ')}
           `);
