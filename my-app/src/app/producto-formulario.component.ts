@@ -39,13 +39,13 @@ export class ProductoFormularioComponent {
         (cat) => cat.id === Number(formValue.categoryId)
       );
       const dataProducto = {
-        title: formValue.title,
+        title: formValue.title.trim(),
         price: Number(formValue.price),
-        description: formValue.description,
+        description: formValue.description.trim(),
         categoryId: Number(formValue.categoryId),
         images: ['https://example.com'],
       };
-
+      console.log(JSON.stringify(dataProducto));
       fetch('https://api.escuelajs.co/api/v1/products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -54,17 +54,17 @@ export class ProductoFormularioComponent {
         .then((response) => response.json())
         .then((data) => {
           alert(`Producto creado exitosamente!
-- Título: ${data.title}
-- Precio: ${data.price}
-- Descripción: ${data.description}
-- Categoría: ${
-            categoriaSeleccionada
-              ? categoriaSeleccionada.name
-              : data.category?.name || data.category?.id
-          }
-- ID: ${data.id}
-- Imágenes: ${data.images?.join(', ')}
-          `);
+      - Título: ${data.title}
+      - Precio: ${data.price}
+      - Descripción: ${data.description}
+      - Categoría: ${
+        categoriaSeleccionada
+          ? categoriaSeleccionada.name
+          : data.category?.name || data.category?.id
+      }
+      - ID: ${data.id}
+      - Imágenes: ${data.images?.join(', ')}
+                `);
           this.productoFormulario.reset();
         })
         .catch((error) => alert('Error:' + error.message));
