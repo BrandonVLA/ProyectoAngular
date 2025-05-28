@@ -14,4 +14,14 @@
 
 * Haz que cuando envie la informacion al API,se tomen en cuenta las categorias que tengo en el dropdown,en lugar de generar una aleatoria o tomar la de la API y se muestre toda la informacion en el alert de manera correcta 
 
+🔒 **Validaciones**:
+* Todos los campos son Obligatorios
+* Validacion de formato mediante expresiones regulares y la propiedad 'pattern'
+* Se muestran advertencias e instrucciones en caso de campos invalidos
+* Seleccion de Categoria utilizando un tag de html 'select'
 
+💡 **Tecnologías utilizadas**:
+
+* Angular 19 Reactive Forms
+* Validaciones con 'FormBuilder' y Validators.pattern
+* Fetch a API para peticiones de tipo HTTP
