@@ -3,6 +3,7 @@
 
 ## Formulario de Creación de Producto con Angular 19
 
+#### Formulario para ingreso de Productos a Inventario por medio de Angular 19 con utilizacion de FormBuilder, Validators.pattern, API y fetch ####
 
 ### Prompts de Copilot Utilizados:
 
