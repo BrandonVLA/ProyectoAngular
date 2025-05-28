@@ -5,7 +5,7 @@
 
 #### Formulario para ingreso de Productos a Inventario por medio de Angular 19 con utilizacion de FormBuilder, Validators.pattern, API y fetch ####
 
-### Prompts de Copilot Utilizados:
+## Prompts de Copilot Utilizados:
 
 * 1- Revisa la sintaxis y verifica por que <app-producto-formulario></app-producto-formulario> lo esta tomando como un tag inexistente
 
